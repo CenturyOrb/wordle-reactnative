@@ -4,44 +4,46 @@ import { View,
 } from 'react-native'
 import KeyCap from './KeyCap.js'
 import LargeCap from './LargeCap.js'
+import LargeCapRed from './LargeCapRed.js'
+import LargeCapGreen from './LargeCapGreen.js'
 import { testBox, flexDirectionRow, width100p } from './constants.js'
 
 export default function WordleKeyboard() {
 	return (
-		<View style={[styles.wordleKeyboard,]}> 
-			<View style={[flexDirectionRow, styles.keyboardRow]}>
-				<KeyCap>q</KeyCap>
-				<KeyCap>w</KeyCap>
-				<KeyCap>e</KeyCap>
-				<KeyCap>r</KeyCap>
-				<KeyCap>t</KeyCap>
-                <KeyCap>y</KeyCap>
-                <KeyCap>u</KeyCap>
-                <KeyCap>i</KeyCap>
-				<KeyCap>o</KeyCap>
-                <KeyCap>p</KeyCap>
+		<View style={[styles.wordleKeyboard, width100p, {paddingHorizontal: 5}]}> 
+			<View style={[styles.keyboardRow, flexDirectionRow]}>
+				<KeyCap>Q</KeyCap>
+				<KeyCap>W</KeyCap>
+				<KeyCap>E</KeyCap>
+				<KeyCap>R</KeyCap>
+				<KeyCap>T</KeyCap>
+                <KeyCap>Y</KeyCap>
+                <KeyCap>U</KeyCap>
+                <KeyCap>I</KeyCap>
+				<KeyCap>O</KeyCap>
+                <KeyCap>P</KeyCap>
 			</View>
-			<View style={[flexDirectionRow, styles.keyboardRow]}>
-				<KeyCap>a</KeyCap>	
-                <KeyCap>s</KeyCap>
-                <KeyCap>d</KeyCap>
-                <KeyCap>f</KeyCap>
-                <KeyCap>g</KeyCap>
-                <KeyCap>h</KeyCap>
-                <KeyCap>j</KeyCap>
-                <KeyCap>k</KeyCap>
-                <KeyCap>l</KeyCap>
+			<View style={[styles.keyboardRow, flexDirectionRow]}>
+				<KeyCap>A</KeyCap>	
+                <KeyCap>S</KeyCap>
+                <KeyCap>D</KeyCap>
+                <KeyCap>F</KeyCap>
+                <KeyCap>G</KeyCap>
+                <KeyCap>H</KeyCap>
+                <KeyCap>J</KeyCap>
+                <KeyCap>K</KeyCap>
+                <KeyCap>L</KeyCap>
 			</View>
-			<View style={[flexDirectionRow, styles.keyboardRow]}>
-		    	<LargeCap>Enter</LargeCap>
-				<KeyCap>z</KeyCap>	
-                <KeyCap>x</KeyCap>
-                <KeyCap>c</KeyCap>
-                <KeyCap>v</KeyCap>
-                <KeyCap>b</KeyCap>
-                <KeyCap>n</KeyCap>
-                <KeyCap>m</KeyCap>
-				<LargeCap>{'<='}</LargeCap>
+			<View style={[styles.keyboardRow, flexDirectionRow]}>
+		    	<LargeCapGreen>Enter</LargeCapGreen>
+				<KeyCap>Z</KeyCap>	
+                <KeyCap>X</KeyCap>
+                <KeyCap>C</KeyCap>
+                <KeyCap>V</KeyCap>
+                <KeyCap>B</KeyCap>
+                <KeyCap>N</KeyCap>
+                <KeyCap>M</KeyCap>
+				<LargeCapRed>{'<'}</LargeCapRed>
 			</View>
 		</View>					
 	);
@@ -49,14 +51,11 @@ export default function WordleKeyboard() {
 
 const styles = StyleSheet.create({
 	wordleKeyboard: {
-		marginTop: 60,
+		marginTop: 70,
 		gap: 10,
-		alignItems: 'center',
-		width: '100%'
 	},
 	keyboardRow: {
 		gap: 5,
-		width: '100%',
-		justifyContent: 'center'	
+		justifyContent: 'center',
 	},
 });

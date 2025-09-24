@@ -1,5 +1,5 @@
+import { useState, useRef, useEffect, createContext } from 'react'
 import { main_color, bg_color, green_color, yellow_color } from './constants.js'
-import { useState, useRef, useEffect } from 'react'
 import { StyleSheet, 
 		Text, 
 		View, 
@@ -8,9 +8,9 @@ import { StyleSheet,
 		TextInput, 
 		Button,
 } from 'react-native';
-
 import Row from './Row.js'
 import WordleKeyboard from './WordleKeyboard.js'
+import { GridProvider } from './context.js'
 
 export default function App() {
 
@@ -22,7 +22,7 @@ export default function App() {
 		'     '.split(''),
 		'     '.split('')
 	]);
-	
+
 	// map each row to a Row Component
 	return (
 		<>
@@ -30,12 +30,15 @@ export default function App() {
 		<SafeAreaView style={{backgroundColor: bg_color, flex: 1 }}> 
 			<View style={appStyles.container}>
 				<Text style={[appStyles.text, {textAlign: 'center', fontSize: 40}]}>Wordle</Text>
+				{/*in the future make this into a WordleGrid component itself*/}
+				<GridProvider>
 				<View style={appStyles.wordle}>
 					{wordleGrid.map((row, index) => 
 						(<Row key={index} letters={row}/> )
 					)}
 				</View>					
 				<WordleKeyboard/>
+				</GridProvider>
 			</View>
 		</SafeAreaView>
 		</>

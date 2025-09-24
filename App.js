@@ -47,7 +47,6 @@ export const appStyles = StyleSheet.create({
   		flex: 1,
   	  	backgroundColor: bg_color,
 		alignItems: 'center',
-		paddingHorizontal: 45,
 		paddingTop: 30,
   	},
 	text: {
@@ -58,7 +57,7 @@ export const appStyles = StyleSheet.create({
 	wordle: {
 		marginTop: '10%',
 		gap: 7,
-		width: '100%',
+		width: '77%',
 	},
 });
 

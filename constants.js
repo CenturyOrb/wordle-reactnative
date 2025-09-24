@@ -13,3 +13,7 @@ export const testBox = {
 export const flexDirectionRow = { 
 	flexDirection: 'row'
 }
+
+export const textWhite = { 
+	color: 'white'
+}

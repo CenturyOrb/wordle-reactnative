@@ -17,3 +17,7 @@ export const flexDirectionRow = {
 export const textWhite = { 
 	color: 'white'
 }
+
+export const width100p = {
+	width: '100%'
+}

@@ -3,11 +3,12 @@ import { View,
 		Text
 } from 'react-native'
 import KeyCap from './KeyCap.js'
-import { testBox, flexDirectionRow } from './constants.js'
+import LargeCap from './LargeCap.js'
+import { testBox, flexDirectionRow, width100p } from './constants.js'
 
 export default function WordleKeyboard() {
 	return (
-		<View style={[testBox, styles.wordleKeyboard,]}> 
+		<View style={[styles.wordleKeyboard,]}> 
 			<View style={[flexDirectionRow, styles.keyboardRow]}>
 				<KeyCap>q</KeyCap>
 				<KeyCap>w</KeyCap>
@@ -32,6 +33,7 @@ export default function WordleKeyboard() {
                 <KeyCap>l</KeyCap>
 			</View>
 			<View style={[flexDirectionRow, styles.keyboardRow]}>
+		    	<LargeCap>Enter</LargeCap>
 				<KeyCap>z</KeyCap>	
                 <KeyCap>x</KeyCap>
                 <KeyCap>c</KeyCap>
@@ -39,6 +41,7 @@ export default function WordleKeyboard() {
                 <KeyCap>b</KeyCap>
                 <KeyCap>n</KeyCap>
                 <KeyCap>m</KeyCap>
+				<LargeCap>{'<='}</LargeCap>
 			</View>
 		</View>					
 	);
@@ -52,6 +55,8 @@ const styles = StyleSheet.create({
 		width: '100%'
 	},
 	keyboardRow: {
-		gap: 5
-	}
+		gap: 5,
+		width: '100%',
+		justifyContent: 'center'	
+	},
 });

@@ -55,7 +55,7 @@ export const appStyles = StyleSheet.create({
 		fontSize: 31
 	},
 	wordle: {
-		marginTop: '10%',
+		marginTop: '13%',
 		gap: 7,
 		width: '77%',
 	},

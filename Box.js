@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import { main_color } from './App.js'
+import { main_color, bg_color, green_color, yellow_color } from './constants.js'
 
 const Box = ({ children }) => {
 	return (

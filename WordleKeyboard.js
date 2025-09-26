@@ -3,7 +3,6 @@ import { View,
 		Text
 } from 'react-native'
 import KeyCap from './KeyCap.js'
-import LargeCap from './LargeCap.js'
 import LargeCapRed from './LargeCapRed.js'
 import LargeCapGreen from './LargeCapGreen.js'
 import { testBox, flexDirectionRow, width100p } from './constants.js'

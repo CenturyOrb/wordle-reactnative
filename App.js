@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, createContext } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { main_color, bg_color, green_color, yellow_color } from './constants.js'
 import { StyleSheet, 
 		Text, 
@@ -8,40 +8,24 @@ import { StyleSheet,
 		TextInput, 
 		Button,
 } from 'react-native';
-import Row from './Row.js'
+import { AppProvider } from './AppContext.js'
+import wordleGrid from './WordleGrid.js'
 import WordleKeyboard from './WordleKeyboard.js'
-import { GridProvider } from './context.js'
 
 export default function App() {
 
-	const [wordleGrid, setWordleGrid] = useState([
-		'     '.split(''),
-		'     '.split(''),
-		'     '.split(''),
-		'     '.split(''),
-		'     '.split(''),
-		'     '.split('')
-	]);
-
 	// map each row to a Row Component
 	return (
-		<>
+		<AppProvider>
 		<StatusBar hidden/>
 		<SafeAreaView style={{backgroundColor: bg_color, flex: 1 }}> 
 			<View style={appStyles.container}>
 				<Text style={[appStyles.text, {textAlign: 'center', fontSize: 40}]}>Wordle</Text>
-				{/*in the future make this into a WordleGrid component itself*/}
-				<GridProvider>
-				<View style={appStyles.wordle}>
-					{wordleGrid.map((row, index) => 
-						(<Row key={index} letters={row}/> )
-					)}
-				</View>					
-				<WordleKeyboard/>
-				</GridProvider>
+				<WordleGrid />
+				<WordleKeyboard />
 			</View>
 		</SafeAreaView>
-		</>
+		</AppProvider>
   	);
 }
 
@@ -56,14 +40,5 @@ export const appStyles = StyleSheet.create({
 		color: '#fff',
 		fontWeight: 'bold',
 		fontSize: 31
-	},
-	wordle: {
-		marginTop: 75,
-		gap: 7,
-		width: '77%',
-	},
+	}
 });
-
-const fetchWord = () => {
-	return 'blaze';
-}

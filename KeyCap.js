@@ -1,11 +1,11 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { Text, Pressable, StyleSheet } from 'react-native'
-import { testBox, textWhite } from './constants.js'
-import { main_color, mainDark_color } from './constants.js'
+import { AppContext } from './AppContext.js'
+import { testBox, textWhite, main_color, mainDark_color } from './constants.js'
 
 export default function KeyCap({ children }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: main_color});
-	//const {wordleGrid, setWordleGrid} = useContext(GridContext);
+	const { wordleGrid, setWordleGrid } = useContext(AppContext);
 	
 	const handleKeyPressIn = () => {
 		setBackgroundColor({backgroundColor: mainDark_color});
@@ -14,11 +14,14 @@ export default function KeyCap({ children }) {
 	const handleKeyPressOut = () => {
 		setBackgroundColor({backgroundColor: main_color});
 		// if applicable, the next line should add the current letter
-		//const wordleGridCopy = [...wordleGrid];
-		//const currentRow = wordleGridCopy.find(row => row[4] === ' ');
-		//const index = currentRow.indexOf(' ');	
-		//if (index !== -1) { currentRow[index] = children }
-		//setWordleGrid(wordleGridCopy);
+		const wordleGridCopy = structuredClone(wordleGrid);
+		const currentRow = wordleGridCopy.find(row => row[4] === ' '); 
+		if (!currentRow) { 
+			console.log('all rows filled'); 
+		}
+		const index = currentRow.indexOf(' ');	
+		if (index !== -1) { currentRow[index] = children }
+		setWordleGrid(wordleGridCopy);
 	}
 	
 	return (

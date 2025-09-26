@@ -1,13 +1,17 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
-import AppContext from '../context/AppContext.js'
+import { AppContext } from './AppContext.js'
 import Row from './Row.js'
 
 export default function WordleGrid() {
 	const { wordleGrid, setWordleGrid } = useContext(AppContext);
 
+	useEffect(() => {
+		console.log(wordleGrid);
+	}, [wordleGrid]);
+
 	return (
-		<View style={appStyles.wordle}>            		
+		<View style={styles.wordle}>            		
         	{wordleGrid.map((row, index) => 
         		(<Row key={index} letters={row}/> )
         	)}

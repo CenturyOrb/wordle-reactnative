@@ -9,7 +9,7 @@ import { StyleSheet,
 		Button,
 } from 'react-native';
 import { AppProvider } from './AppContext.js'
-import wordleGrid from './WordleGrid.js'
+import WordleGrid from './WordleGrid.js'
 import WordleKeyboard from './WordleKeyboard.js'
 
 export default function App() {

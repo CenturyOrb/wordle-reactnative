@@ -6,7 +6,7 @@ export default function Row({ letters }) {
 	return (
 		<View style={styles.row}> 
 			{letters.map((character, index) => (
-				<Box key={index} letter={character}></Box>	
+				<Box key={index}>{character}</Box>	
 			))}
 		</View> 
 	);

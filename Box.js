@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { AppContext } from './AppContext.js'
 import { main_color, green_color, yellow_color, gray_color } from './constants.js'
 
 const Box = ({ children, color }) => {
-	
 	return (
-		<View style={styles.box}>	
+		<View style={[styles.box, {backgroundColor: color}]}>	
 			<Text style={styles.text}>{children}</Text>
 		</View>
 	);

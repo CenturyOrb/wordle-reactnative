@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react'
 import { Text, Pressable, StyleSheet } from 'react-native'
 import { AppContext } from './AppContext.js'
-import { textWhite, green_color, greenDark_color } from './constants.js'
+import { textWhite, green_color, greenDark_color, gray_color, yellow_color } from './constants.js'
 
 export default function LargeCap({ children }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: green_color});	
-	const { wordleGrid, finishedRow, wordle } = useContext(AppContext);
+	const { wordleGrid, setWordleGrid, finishedRow, wordle } = useContext(AppContext);
     
     const handleKeyPressIn = () => {
     	setBackgroundColor({backgroundColor: greenDark_color});
@@ -25,8 +25,18 @@ export default function LargeCap({ children }) {
 			console.log('end game here');
 		} else { 
 			// change colors of current row
+			// loop through row values and change boxObj.color 
+			currentRow.forEach((boxObj, index) => {
+				// add letter included but not in right location
+				if (wordle.current.includes(boxObj.value)) {					
+                	boxObj.color = wordle.current.charAt(index) === boxObj.value
+						? green_color
+						: yellow_color;
+                } else { boxObj.color = gray_color }
+			});
 			console.log('next line');
 			finishedRow.current++;
+			setWordleGrid(wordleGridCopy);	
 		}
     }
 

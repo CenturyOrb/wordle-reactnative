@@ -1,5 +1,5 @@
 import { createContext, useState, useRef } from 'react'
-import { bg_color } from './constants.js'
+import { bg_color, main_color } from './constants.js'
 
 const AppContext = createContext(null);
 

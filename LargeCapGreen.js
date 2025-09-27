@@ -26,6 +26,7 @@ export default function LargeCap({ children }) {
 		} else { 
 			// change colors of current row
 			// loop through row values and change boxObj.color 
+			// TODO: change colors of the keyboard
 			currentRow.forEach((boxObj, index) => {
 				// add letter included but not in right location
 				if (wordle.current.includes(boxObj.value)) {					

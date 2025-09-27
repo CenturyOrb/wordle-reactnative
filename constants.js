@@ -10,6 +10,14 @@ export const yellow_color = '#fabd2f';
 export const red_color = '#fb4934';
 export const redDark_color = '#bb3527';
 
+export const Status = Object.freeze({
+	pressed: mainDark_color,
+ 	guessed: gray_color,	
+	neutral: main_color,
+	partial: yellow_color,
+	correct: green_color
+});
+
 export const testBox = { 
 	borderWidth: 1,
 	borderColor: 'white'

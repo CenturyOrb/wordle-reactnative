@@ -1,18 +1,27 @@
 import { useState, useContext } from 'react'
 import { Text, Pressable, StyleSheet } from 'react-native'
 import { AppContext } from './AppContext.js'
-import { testBox, textWhite, main_color, mainDark_color } from './constants.js'
+import { testBox, textWhite, main_color, mainDark_color, Status } from './constants.js'
 
-export default function KeyCap({ children }) {
-	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: main_color});
+export default function KeyCap({ children, status, pos, changeStatus }) {
+	// on enter should change the keycap
+	//const [backgroundColor, setBackgroundColor] = useState({backgroundColor: main_color});
 	const { wordleGrid, setWordleGrid, finishedRow } = useContext(AppContext);
+		
+	const color = status[pos].status;
 	
 	const handleKeyPressIn = () => {
-		setBackgroundColor({backgroundColor: mainDark_color});
+		const statusCopy = structuredClone(status);
+		const currStatus = statusCopy[pos];
+		currStatus.status = Status.pressed;
+		changeStatus(statusCopy);	
 	}
 	
 	const handleKeyPressOut = () => {
-		setBackgroundColor({backgroundColor: main_color});
+		const statusCopy = structuredClone(status);
+        const currStatus = statusCopy[pos];
+        currStatus.status = Status.neutral;
+        changeStatus(statusCopy);	
 		// if applicable, the next line should add the current letter
 		const wordleGridCopy = structuredClone(wordleGrid);
 		const currentRow = wordleGridCopy[finishedRow.current+1];
@@ -24,10 +33,10 @@ export default function KeyCap({ children }) {
 		if (index !== -1) { currentRow[index].value = children }
 		setWordleGrid(wordleGridCopy);
 	}
-	
+
 	return (
 		<Pressable 
-			style={[styles.keycap, backgroundColor]}
+			style={[styles.keycap, {backgroundColor: color}]}
 			onPressIn={handleKeyPressIn}
 			onPressOut={handleKeyPressOut}
 		>

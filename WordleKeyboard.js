@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, 
 		StyleSheet,
 		Text
@@ -5,43 +6,55 @@ import { View,
 import KeyCap from './KeyCap.js'
 import LargeCapRed from './LargeCapRed.js'
 import LargeCapGreen from './LargeCapGreen.js'
-import { testBox, flexDirectionRow, width100p } from './constants.js'
+import { testBox, flexDirectionRow, width100p, Status } from './constants.js'
+
+const qwertyKeys = [
+  'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+  'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+  'Z', 'X', 'C', 'V', 'B', 'N', 'M'
+];
 
 export default function WordleKeyboard() {
+	
+	const [keyStatus, setKeyStatus] = useState(
+		qwertyKeys.map(letter => ({
+			key: letter,
+	   		status: Status.neutral
+	  	}))
+	);
+
 	return (
 		<View style={[styles.wordleKeyboard, width100p, {paddingHorizontal: 5}]}> 
 			<View style={[styles.keyboardRow, flexDirectionRow]}>
-				<KeyCap>Q</KeyCap>
-				<KeyCap>W</KeyCap>
-				<KeyCap>E</KeyCap>
-				<KeyCap>R</KeyCap>
-				<KeyCap>T</KeyCap>
-                <KeyCap>Y</KeyCap>
-                <KeyCap>U</KeyCap>
-                <KeyCap>I</KeyCap>
-				<KeyCap>O</KeyCap>
-                <KeyCap>P</KeyCap>
+				{keyStatus.slice(0, 10).map((k, index) => (
+					<KeyCap 
+						key={index} 
+						status={keyStatus}
+						pos={index}
+						changeStatus={setKeyStatus}
+					>{k.key}</KeyCap>	
+				))}
 			</View>
 			<View style={[styles.keyboardRow, flexDirectionRow]}>
-				<KeyCap>A</KeyCap>	
-                <KeyCap>S</KeyCap>
-                <KeyCap>D</KeyCap>
-                <KeyCap>F</KeyCap>
-                <KeyCap>G</KeyCap>
-                <KeyCap>H</KeyCap>
-                <KeyCap>J</KeyCap>
-                <KeyCap>K</KeyCap>
-                <KeyCap>L</KeyCap>
+				{keyStatus.slice(10, 19).map((k, index) => (                 				
+					<KeyCap 
+                    	key={index} 
+                    	status={keyStatus}
+                    	pos={index+10}
+                    	changeStatus={setKeyStatus}
+                    >{k.key}</KeyCap>	
+                ))}
 			</View>
 			<View style={[styles.keyboardRow, flexDirectionRow]}>
 		    	<LargeCapGreen>Enter</LargeCapGreen>
-				<KeyCap>Z</KeyCap>	
-                <KeyCap>X</KeyCap>
-                <KeyCap>C</KeyCap>
-                <KeyCap>V</KeyCap>
-                <KeyCap>B</KeyCap>
-                <KeyCap>N</KeyCap>
-                <KeyCap>M</KeyCap>
+				{keyStatus.slice(19).map((k, index) => (                 					
+					<KeyCap 
+                    	key={index} 
+                    	status={keyStatus}
+                    	pos={index+19}
+                    	changeStatus={setKeyStatus}
+                    >{k.key}</KeyCap>	
+                ))}
 				<LargeCapRed>{'<'}</LargeCapRed>
 			</View>
 		</View>					

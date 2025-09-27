@@ -18,8 +18,8 @@ export default function LargeCap({ children }) {
       	}
 		// index of the last letter
 		// will return -1 if there are no letters left in the currentRow
-        const index = currentRow.findLastIndex(letter => letter !== ' ' );	
-		if (index !== -1) { currentRow[index] = ' ' }
+        const index = currentRow.findLastIndex(boxObj => boxObj.value !== ' ' );	
+		if (index !== -1) { currentRow[index].value = ' ' }
         setWordleGrid(wordleGridCopy);
     }
     

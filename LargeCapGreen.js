@@ -16,13 +16,16 @@ export default function LargeCap({ children }) {
 		// check if the row is full, if so then incremeent row
 		const wordleGridCopy = structuredClone(wordleGrid);
 		const currentRow = wordleGridCopy[finishedRow.current+1];
-		const isEmpty = currentRow.includes(' ');		
+		const isEmpty = currentRow.findIndex(boxObj => boxObj.value === ' ') !== -1;
 		if (isEmpty) return;
 		// full row check if the word is correct, otherwise go to next row
-		if (currentRow.join('') === wordle.current) {
+		const word = currentRow.map(boxObj => boxObj.value).join('');
+		if (word === wordle.current) {
 			// end the game here
+			console.log('end game here');
 		} else { 
 			// change colors of current row
+			console.log('next line');
 			finishedRow.current++;
 		}
     }

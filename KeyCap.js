@@ -5,7 +5,7 @@ import { testBox, textWhite, main_color, mainDark_color } from './constants.js'
 
 export default function KeyCap({ children }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: main_color});
-	const { wordleGrid, setWordleGrid } = useContext(AppContext);
+	const { wordleGrid, setWordleGrid, finishedRow } = useContext(AppContext);
 	
 	const handleKeyPressIn = () => {
 		setBackgroundColor({backgroundColor: mainDark_color});
@@ -15,10 +15,11 @@ export default function KeyCap({ children }) {
 		setBackgroundColor({backgroundColor: main_color});
 		// if applicable, the next line should add the current letter
 		const wordleGridCopy = structuredClone(wordleGrid);
-		const currentRow = wordleGridCopy.find(row => row[4] === ' '); 
+		const currentRow = wordleGridCopy[finishedRow.current+1];
 		if (!currentRow) { 
 			console.log('all rows filled'); 
 		}
+		// if there are spots left in the row, add, if not then do nothing
 		const index = currentRow.indexOf(' ');	
 		if (index !== -1) { currentRow[index] = children }
 		setWordleGrid(wordleGridCopy);

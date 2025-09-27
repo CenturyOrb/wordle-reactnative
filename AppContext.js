@@ -1,13 +1,15 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useRef } from 'react'
 
 const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
 	const [wordleGrid, setWordleGrid] = useState(Array(6).fill(null).map(() => Array(5).fill(' ')));	
+	const [lastEntry, setLastEntry] = useState(null);
+	const finishedRow = useRef(-1);
 
 	return(
 		<AppContext.Provider
-			value={{wordleGrid, setWordleGrid}}
+			value={{wordleGrid, setWordleGrid, finishedRow }}
 		> 
 			{children}
 		</AppContext.Provider>

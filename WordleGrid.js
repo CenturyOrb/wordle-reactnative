@@ -6,10 +6,6 @@ import Row from './Row.js'
 export default function WordleGrid() {
 	const { wordleGrid, setWordleGrid } = useContext(AppContext);
 
-	useEffect(() => {
-		console.log(wordleGrid);
-	}, [wordleGrid]);
-
 	return (
 		<View style={styles.wordle}>            		
         	{wordleGrid.map((row, index) => 

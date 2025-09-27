@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react'
 import { Text, Pressable, StyleSheet } from 'react-native'
 import { AppContext } from './AppContext.js'
-import { textWhite, green_color, greenDark_color, gray_color, yellow_color } from './constants.js'
+import { textWhite, green_color, greenDark_color, gray_color, yellow_color, Status } from './constants.js'
 
-export default function LargeCap({ children }) {
+export default function LargeCap({ children, status, changeStatus }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: green_color});	
 	const { wordleGrid, setWordleGrid, finishedRow, wordle } = useContext(AppContext);
     
@@ -26,18 +26,28 @@ export default function LargeCap({ children }) {
 		} else { 
 			// change colors of current row
 			// loop through row values and change boxObj.color 
-			// TODO: change colors of the keyboard
+			// TODO: change colors of the keyboard keycaps
+			const statusCopy = structuredClone(status);
 			currentRow.forEach((boxObj, index) => {
 				// add letter included but not in right location
+				const keyObj = statusCopy.find(keyObj => keyObj.key === boxObj.value);	
 				if (wordle.current.includes(boxObj.value)) {					
                 	boxObj.color = wordle.current.charAt(index) === boxObj.value
 						? green_color
 						: yellow_color;
-                } else { boxObj.color = gray_color }
+						
+					keyObj.status = wordle.current.charAt(index) === boxObj.value
+						? Status.correct
+						: Status.partial
+                } else { 
+					boxObj.color = gray_color;
+					keyObj.status =  Status.guessed;
+				}
 			});
 			console.log('next line');
 			finishedRow.current++;
 			setWordleGrid(wordleGridCopy);	
+			changeStatus(statusCopy);
 		}
     }
 

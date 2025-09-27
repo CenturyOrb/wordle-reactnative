@@ -13,15 +13,26 @@ export default function KeyCap({ children, status, pos, changeStatus }) {
 	const handleKeyPressIn = () => {
 		const statusCopy = structuredClone(status);
 		const currStatus = statusCopy[pos];
-		currStatus.status = Status.pressed;
-		changeStatus(statusCopy);	
+		// if already used do not run
+		if (currStatus.status === Status.partial 
+			|| currStatus.status === Status.correct 
+			|| currStatus.status === Status.guessed) {
+		} else {
+			currStatus.status = Status.pressed;
+            changeStatus(statusCopy);	
+		}
 	}
 	
 	const handleKeyPressOut = () => {
 		const statusCopy = structuredClone(status);
         const currStatus = statusCopy[pos];
-        currStatus.status = Status.neutral;
-        changeStatus(statusCopy);	
+		if (currStatus.status === Status.partial      
+        	|| currStatus.status === Status.correct 
+        	|| currStatus.status === Status.guessed) {
+        } else {
+			currStatus.status = Status.neutral;
+            changeStatus(statusCopy);	
+		}
 		// if applicable, the next line should add the current letter
 		const wordleGridCopy = structuredClone(wordleGrid);
 		const currentRow = wordleGridCopy[finishedRow.current+1];

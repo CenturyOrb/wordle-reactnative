@@ -46,7 +46,10 @@ export default function WordleKeyboard() {
                 ))}
 			</View>
 			<View style={[styles.keyboardRow, flexDirectionRow]}>
-		    	<LargeCapGreen>Enter</LargeCapGreen>
+		    	<LargeCapGreen 
+					status={keyStatus} 
+					changeStatus={setKeyStatus}
+				>Enter</LargeCapGreen>
 				{keyStatus.slice(19).map((k, index) => (                 					
 					<KeyCap 
                     	key={index} 

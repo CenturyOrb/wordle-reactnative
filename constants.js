@@ -2,17 +2,19 @@
 
 export const main_color = '#928374';
 export const mainDark_color = '#6e6155';
+export const mainDarker_color = '#5e5248';
 export const bg_color = '#282828';
 export const gray_color = '#7c6f64';
 export const green_color = '#b8bb26';
 export const greenDark_color = '#8d8f1d';
 export const yellow_color = '#fabd2f';
+export const yellowDark_color = '#c89126';
 export const red_color = '#fb4934';
 export const redDark_color = '#bb3527';
 
 export const Status = Object.freeze({
 	pressed: mainDark_color,
- 	guessed: gray_color,	
+ 	guessed: mainDarker_color,	
 	neutral: main_color,
 	partial: yellow_color,
 	correct: green_color

@@ -20,7 +20,7 @@ export default function KeyCap({ children }) {
 			console.log('all rows filled'); 
 		}
 		// if there are spots left in the row, add, if not then do nothing
-		const index = currentRow.indexOf(' ');	
+		const index = currentRow.indexOf(' ');	// returns -1 if no spots left
 		if (index !== -1) { currentRow[index] = children }
 		setWordleGrid(wordleGridCopy);
 	}

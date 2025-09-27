@@ -5,7 +5,7 @@ import { textWhite, green_color, greenDark_color } from './constants.js'
 
 export default function LargeCap({ children }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: green_color});	
-	const { wordleGrid, setWordleGrid, finishedRow } = useContext(AppContext);
+	const { wordleGrid, finishedRow } = useContext(AppContext);
     
     const handleKeyPressIn = () => {
     	setBackgroundColor({backgroundColor: greenDark_color});
@@ -16,7 +16,10 @@ export default function LargeCap({ children }) {
 		// check if the row is full, if so then incremeent row
 		const wordleGridCopy = structuredClone(wordleGrid);
 		const currentRow = wordleGridCopy[finishedRow.current+1];
-		console.log(currentRow);
+		const isEmpty = currentRow.includes(' ');		
+		if (isEmpty) return;
+		// full row
+		finishedRow.current++; 
     }
 
 	return (

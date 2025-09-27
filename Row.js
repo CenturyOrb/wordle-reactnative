@@ -5,8 +5,8 @@ export default function Row({ letters }) {
 	// using map to make boxes
 	return (
 		<View style={styles.row}> 
-			{letters.map((character, index) => (
-				<Box key={index}>{character}</Box>	
+			{letters.map((boxObject, index) => (
+				<Box key={index}>{boxObject.value}</Box>	
 			))}
 		</View> 
 	);

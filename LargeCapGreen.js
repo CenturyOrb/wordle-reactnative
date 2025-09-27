@@ -5,7 +5,7 @@ import { textWhite, green_color, greenDark_color } from './constants.js'
 
 export default function LargeCap({ children }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: green_color});	
-	const { wordleGrid, finishedRow } = useContext(AppContext);
+	const { wordleGrid, finishedRow, wordle } = useContext(AppContext);
     
     const handleKeyPressIn = () => {
     	setBackgroundColor({backgroundColor: greenDark_color});
@@ -18,8 +18,13 @@ export default function LargeCap({ children }) {
 		const currentRow = wordleGridCopy[finishedRow.current+1];
 		const isEmpty = currentRow.includes(' ');		
 		if (isEmpty) return;
-		// full row
-		finishedRow.current++; 
+		// full row check if the word is correct, otherwise go to next row
+		if (currentRow.join('') === wordle.current) {
+			// end the game here
+		} else { 
+			// change colors of current row
+			finishedRow.current++;
+		}
     }
 
 	return (

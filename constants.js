@@ -3,6 +3,7 @@
 export const main_color = '#928374';
 export const mainDark_color = '#6e6155';
 export const bg_color = '#282828';
+export const gray_color = '#282828';
 export const green_color = '#b8bb26';
 export const greenDark_color = '#8d8f1d';
 export const yellow_color = '#fabd2f';

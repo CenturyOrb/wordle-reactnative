@@ -13,7 +13,7 @@ export default function WordleGrid() {
 			const response = await axios.get('https://random-word-api.herokuapp.com/word',
 				{params: {length: 5}}
 			);
-			wordle.current = response.data[0];
+			wordle.current = response.data[0].toUpperCase();
 			console.log(wordle.current);
 		}
 		fetchWordle();

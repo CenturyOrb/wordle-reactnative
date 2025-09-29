@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { View, 
 		StyleSheet,
 		Text
 } from 'react-native'
+import { AppContext } from './AppContext.js'
 import KeyCap from './KeyCap.js'
 import LargeCapRed from './LargeCapRed.js'
 import LargeCapGreen from './LargeCapGreen.js'
@@ -23,7 +24,7 @@ export default function WordleKeyboard() {
 	  	}))
 	);
 	
-	const [wordleGuessed, setWordleGuessed] = useState(false);
+	const {wordleGuessed, setWordleGuessed} = useContext(AppContext);
 	
 	if (wordleGuessed) return null;
 

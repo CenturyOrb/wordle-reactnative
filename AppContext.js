@@ -15,10 +15,17 @@ const AppProvider = ({ children }) => {
 	const [lastEntry, setLastEntry] = useState(null);
 	const finishedRow = useRef(-1);
 	const wordle = useRef(null);
+	const [wordleGuessed, setWordleGuessed] = useState(false);
 
 	return(
 		<AppContext.Provider
-			value={{wordleGrid, setWordleGrid, finishedRow, wordle}}
+			value={
+				{
+				wordleGrid, setWordleGrid, 
+				finishedRow, 
+				wordle,
+				wordleGuessed, setWordleGuessed
+				}}
 		> 
 			{children}
 		</AppContext.Provider>

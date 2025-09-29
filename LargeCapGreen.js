@@ -3,9 +3,9 @@ import { Text, Pressable, StyleSheet } from 'react-native'
 import { AppContext } from './AppContext.js'
 import { textWhite, green_color, greenDark_color, gray_color, yellow_color, Status } from './constants.js'
 
-export default function LargeCap({ children, status, changeStatus, onGuessComplete }) {
+export default function LargeCap({ children, status, changeStatus }) {
 	const [backgroundColor, setBackgroundColor] = useState({backgroundColor: green_color});	
-	const { wordleGrid, setWordleGrid, finishedRow, wordle } = useContext(AppContext);
+	const { wordleGrid, setWordleGrid, finishedRow, wordle, setWordleGuessed } = useContext(AppContext);
     
     const handleKeyPressIn = () => {
     	setBackgroundColor({backgroundColor: greenDark_color});
@@ -39,7 +39,7 @@ export default function LargeCap({ children, status, changeStatus, onGuessComple
 		// if won, update the grid but replace keyboard text displaying
 		// hide the keyboard and display the ending winning component
 		if (word === wordle.current) { 
-			onGuessComplete() 
+			setWordleGuessed(true);
 			console.log('guessed');
 		}
         finishedRow.current++;

@@ -5,19 +5,23 @@ import { AppContext } from './AppContext.js'
 import Row from './Row.js'
 
 export default function WordleGrid() {
-	const { wordleGrid, wordle } = useContext(AppContext);
+	const { wordleGuessed, wordleGrid, wordle } = useContext(AppContext);
 	
 	// on mount fetch for word
 	useEffect(() => {
 		const fetchWordle = async () => {
-			const response = await axios.get('https://random-word-api.herokuapp.com/word',
-				{params: {length: 5}}
-			);
-			wordle.current = response.data[0].toUpperCase();
-			console.log(wordle.current);
+			try { 
+				const response = await axios.get('https://random-word-api.herokuapp.com/word',
+					{params: {length: 5}}
+				);
+				wordle.current = response.data[0].toUpperCase();
+				console.log(wordle.current);
+			} catch (error) { console.error(error) } 
 		}
 		fetchWordle();
 	}, []);	
+
+		
 
 	return (
 		<View style={styles.wordle}>            		

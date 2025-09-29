@@ -11,10 +11,12 @@ import { StyleSheet,
 import { AppProvider } from './AppContext.js'
 import WordleGrid from './WordleGrid.js'
 import WordleKeyboard from './WordleKeyboard.js'
+import GameDisplay from './GameDisplay.js'
 
 export default function App() {
-
+		
 	// map each row to a Row Component
+	// TODO: Show keyboard if game hasnt guessed word, show gamedisplay if guessed 
 	return (
 		<AppProvider>
 		<StatusBar hidden/>
@@ -23,6 +25,7 @@ export default function App() {
 				<Text style={[appStyles.text, {textAlign: 'center', fontSize: 40}]}>Wordle</Text>
 				<WordleGrid />
 				<WordleKeyboard />
+				<GameDisplay /> 
 			</View>
 		</SafeAreaView>
 		</AppProvider>

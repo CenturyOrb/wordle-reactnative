@@ -22,6 +22,10 @@ export default function WordleKeyboard() {
 	   		status: Status.neutral
 	  	}))
 	);
+	
+	const [wordleGuessed, setWordleGuessed] = useState(false);
+	
+	if (wordleGuessed) return null;
 
 	return (
 		<View style={[styles.wordleKeyboard, width100p, {paddingHorizontal: 5}]}> 
@@ -49,6 +53,7 @@ export default function WordleKeyboard() {
 		    	<LargeCapGreen 
 					status={keyStatus} 
 					changeStatus={setKeyStatus}
+					onGuessComplete={() => setWordleGuessed(true)}
 				>Enter</LargeCapGreen>
 				{keyStatus.slice(19).map((k, index) => (                 					
 					<KeyCap 

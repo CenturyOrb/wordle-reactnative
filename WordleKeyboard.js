@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { View, 
 		StyleSheet,
 		Text
@@ -23,11 +23,15 @@ export default function WordleKeyboard() {
 	   		status: Status.neutral
 	  	}))
 	);
-	
-	const {wordleGuessed, setWordleGuessed} = useContext(AppContext);
-	
-	if (wordleGuessed.end) return null;
 
+	useEffect(() => { 
+		console.log('mounted WordleKeyboard');
+		
+		return () => { console.log('unmounted WordleKeyboard') } 
+	}, []);
+
+	const { setWordleGuessed } = useContext(AppContext);
+	
 	return (
 		<View style={[styles.wordleKeyboard, width100p, {paddingHorizontal: 5}]}> 
 			<View style={[styles.keyboardRow, flexDirectionRow]}>

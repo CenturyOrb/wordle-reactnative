@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react'
+import { useState, useRef , useContext } from 'react'
 import { main_color, bg_color, green_color, yellow_color } from './constants.js'
 import { StyleSheet, 
 		Text, 
@@ -8,27 +8,30 @@ import { StyleSheet,
 		TextInput, 
 		Button,
 } from 'react-native';
-import { AppProvider } from './AppContext.js'
+import { AppContext } from './AppContext.js'
 import WordleGrid from './WordleGrid.js'
 import WordleKeyboard from './WordleKeyboard.js'
 import GameDisplay from './GameDisplay.js'
 
 export default function App() {
-		
+	const { wordleGuessed } = useContext(AppContext);
+
 	// map each row to a Row Component
 	// TODO: Show keyboard if game hasnt guessed word, show gamedisplay if guessed 
 	return (
-		<AppProvider>
+		<>
 		<StatusBar hidden/>
 		<SafeAreaView style={{backgroundColor: bg_color, flex: 1 }}> 
 			<View style={appStyles.container}>
 				<Text style={[appStyles.text, {textAlign: 'center', fontSize: 40}]}>Wordle</Text>
 				<WordleGrid />
-				<WordleKeyboard />
-				<GameDisplay /> 
+				{wordleGuessed.end 	
+					? <GameDisplay /> 
+					: <WordleKeyboard />
+				}
 			</View>
 		</SafeAreaView>
-		</AppProvider>
+		</>
   	);
 }
 

@@ -16,13 +16,11 @@ export default function WordleGrid() {
 				//);
 				//wordle.current = response.data[0].toUpperCase();
 				wordle.current = 'BLAZE';
-				console.log(wordle.current);
+				console.log('WordleGrid', wordle.current);
 			} catch (error) { console.error(error) } 
 		}
 		fetchWordle();
 	}, []);	
-
-		
 
 	return (
 		<View style={styles.wordle}>            		

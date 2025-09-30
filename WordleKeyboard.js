@@ -24,12 +24,6 @@ export default function WordleKeyboard() {
 	  	}))
 	);
 
-	useEffect(() => { 
-		console.log('mounted WordleKeyboard');
-		
-		return () => { console.log('unmounted WordleKeyboard') } 
-	}, []);
-
 	const { setWordleGuessed } = useContext(AppContext);
 	
 	return (

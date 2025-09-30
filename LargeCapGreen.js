@@ -38,14 +38,20 @@ export default function LargeCap({ children, status, changeStatus }) {
         });
 		// if won, update the grid but replace keyboard text displaying
 		// hide the keyboard and display the ending winning component
+        finishedRow.current++;
 		if (word === wordle.current) { 
 			setWordleGuessed(prevWordleGuessed => {
 				prevWordleGuessed.correct = true;
 				prevWordleGuessed.end = true;
 				return prevWordleGuessed;
 			});
+		}  else if (finishedRow.current === 5) { 
+			setWordleGuessed(prevWordleGuessed => {
+            	prevWordleGuessed.correct = true;
+            	prevWordleGuessed.end = true;
+            	return prevWordleGuessed;
+		    });
 		}
-        finishedRow.current++;
         setWordleGrid(wordleGridCopy);	
         changeStatus(statusCopy);
     }

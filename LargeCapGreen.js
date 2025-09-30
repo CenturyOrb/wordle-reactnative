@@ -39,8 +39,11 @@ export default function LargeCap({ children, status, changeStatus }) {
 		// if won, update the grid but replace keyboard text displaying
 		// hide the keyboard and display the ending winning component
 		if (word === wordle.current) { 
-			setWordleGuessed(true);
-			console.log('guessed');
+			setWordleGuessed(prevWordleGuessed => {
+				prevWordleGuessed.correct = true;
+				prevWordleGuessed.end = true;
+				return prevWordleGuessed;
+			});
 		}
         finishedRow.current++;
         setWordleGrid(wordleGridCopy);	

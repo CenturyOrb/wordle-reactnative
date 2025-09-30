@@ -5,7 +5,6 @@ import { testBox, textWhite, main_color, mainDark_color, Status } from './consta
 
 export default function KeyCap({ children, status, pos, changeStatus }) {
 	// on enter should change the keycap
-	//const [backgroundColor, setBackgroundColor] = useState({backgroundColor: main_color});
 	const { wordleGrid, setWordleGrid, finishedRow } = useContext(AppContext);
 		
 	const color = status[pos].status;
@@ -66,6 +65,6 @@ const styles = StyleSheet.create({
 	letter: {
 		textAlign: 'center',
 		fontWeight: 600,
-		fontSize: 20
+		fontSize: 20,
 	}
 });

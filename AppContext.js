@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
 	const [lastEntry, setLastEntry] = useState(null);
 	const finishedRow = useRef(-1);
 	const wordle = useRef(null);
-	const [wordleGuessed, setWordleGuessed] = useState(false);
+	const [wordleGuessed, setWordleGuessed] = useState({correct: false, end: false});
 
 	return(
 		<AppContext.Provider

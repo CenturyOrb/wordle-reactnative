@@ -26,7 +26,7 @@ export default function WordleKeyboard() {
 	
 	const {wordleGuessed, setWordleGuessed} = useContext(AppContext);
 	
-	if (wordleGuessed) return null;
+	if (wordleGuessed.end) return null;
 
 	return (
 		<View style={[styles.wordleKeyboard, width100p, {paddingHorizontal: 5}]}> 

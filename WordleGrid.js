@@ -11,10 +11,11 @@ export default function WordleGrid() {
 	useEffect(() => {
 		const fetchWordle = async () => {
 			try { 
-				const response = await axios.get('https://random-word-api.herokuapp.com/word',
-					{params: {length: 5}}
-				);
-				wordle.current = response.data[0].toUpperCase();
+				//const response = await axios.get('https://random-word-api.herokuapp.com/word',
+				//	{params: {length: 5}}
+				//);
+				//wordle.current = response.data[0].toUpperCase();
+				wordle.current = 'BLAZE';
 				console.log(wordle.current);
 			} catch (error) { console.error(error) } 
 		}
